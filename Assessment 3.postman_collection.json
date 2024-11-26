@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "700137a8-4e69-4a4a-b5e2-05a2a8881217",
+		"name": "Assessment 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39126859"
+	},
+	"item": [
+		{
+			"name": "POST /users/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"cousingreg\",\n    \"password\": \"mosteligiblebachelor\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /company/id/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/company/6/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /company/id/announcements",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/company/6/announcements",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"announcements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /company/id/teams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/company/6/teams",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /company/companyId/teams/teamId/projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/company/6/teams/11/projects",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"teams",
+						"11",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/annoncements/company/{companyId}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"New Office Dates\",\n    \"message\": \"Office will open on Monday 3rd\",\n    \"author\":{\n        \"id\": 1\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/announcements/company/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"announcements",
+						"company",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/announcements/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/announcements/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"announcements",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/{companyId}/teams",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"name\": \"Team Alpha\",\n    \"description\": \"This is the description of Team Alpha.\",\n    \"company\": {\n        \"id\": 1,\n        \"name\": \"Cook Systems\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080//{companyId}/teams",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"",
+						"{companyId}",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/{teamId}/teammates",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[1,2,3]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/team/{{teamId}}/teammates",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"team",
+						"{{teamId}}",
+						"teammates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/{companyId}/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"credentials\": {\n        \"username\": \"johndoe\",\n        \"password\": \"securepassword\"\n    },\n    \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"phone\": \"123-456-7890\"\n    },\n    \"admin\": false\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/{companyId}/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"{companyId}",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/{companyId}/teams/{teamId}/projects",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"New Project\",\n    \"description\": \"This is the description of the new project.\",\n    \"active\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/{companyId}/teams/{teamId}/projects",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"{companyId}",
+						"teams",
+						"{teamId}",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/{companyId}/teams/{teamId}/projects/{projectId}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Project Name\",\n    \"description\": \"This is the updated description for the project.\",\n    \"active\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/projects/{{companyId}}/teams/{{teamId}}/projects/{{projectId}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projects",
+						"{{companyId}}",
+						"teams",
+						"{{teamId}}",
+						"projects",
+						"{{projectId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/users/{userId}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/{companyId}/users/{userId}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"{companyId}",
+						"users",
+						"{userId}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
