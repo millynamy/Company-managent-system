@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="home-page-container">
+  <h2>Announcements</h2>
+
+  <!-- New Announcement Button -->
+  <button class="new-announcement-button" *ngIf="isAdmin" (click)="openNewAnnouncementModal()">New</button>
+
+  <div *ngIf="isModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>New Announcement</h3>
+        <button class="close-button" (click)="closeNewAnnouncementModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <label for="title">Title</label>
+        <input id="title" [(ngModel)]="newAnnouncement.title" type="text" placeholder="Enter title" />
+        <label for="message">Message</label>
+        <textarea id="message" [(ngModel)]="newAnnouncement.message" placeholder="Enter your announcement"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="submit-button" (click)="submitNewAnnouncement()" [disabled]="!newAnnouncement.title || !newAnnouncement.message">
+          Submit
+        </button>
+      </div>
+      
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <ul *ngIf="announcements.length > 0; else noAnnouncements">
+    <li *ngFor="let announcement of announcements" class="card">
+      <div class="card-header">
+        <span class="author">
+          {{ announcement.author.profile.firstName }} {{ announcement.author.profile.lastName }}
+        </span>
+        <span class="date">{{ announcement.date | date: 'longDate' }}</span>
+      </div>
+      <p>{{ announcement.message }}</p>
+    </li>
+  </ul>
+  
+  <ng-template #noAnnouncements>
+    <p>No announcements available.</p>
+  </ng-template>
+  
+
+</div>

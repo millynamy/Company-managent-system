@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div class="user-registry-container">
+    <h1>User Registry</h1>
+
+    <button class="add-user-btn" (click)="openAddUserModal()" *ngIf="isAdmin()">Add New User</button>
+
+    <div *ngIf="isModalOpen" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New User</h3>
+                <button class="close-button" (click)="closeAddUserModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <label for="firstName">First Name:</label>
+                <input id="firstName" [(ngModel)]="newUser.profile.firstName" type="text" placeholder="Enter first name" />
+                <label for="lastName">Last Name:</label>
+                <input id="lastName" [(ngModel)]="newUser.profile.lastName" type="text" placeholder="Enter last name" />
+                <label for="email">Email:</label>
+                <input id="email" [(ngModel)]="newUser.profile.email" type="email" placeholder="Enter email" />
+                <label for="phone">Phone:</label>
+                <input id="phone" [(ngModel)]="newUser.profile.phone" type="text" placeholder="Enter phone" />
+                <label for="password">Password:</label>
+                <input id="password" [(ngModel)]="newUser.password" type="password" placeholder="Enter password" />
+                <label for="confirmPassword">Confirm Password:</label>
+                <input id="confirmPassword" [(ngModel)]="newUser.confirmPassword" type="password" placeholder="Confirm password" />
+                <label for="admin">Admin Status:</label>
+                <select id="admin" [(ngModel)]="newUser.admin">
+                    <option [value]="true">Yes</option>
+                    <option [value]="false">No</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button
+                    class="submit-button"
+                    (click)="submitNewUser()"
+                    [disabled]="!newUser.password || newUser.password !== newUser.confirmPassword"
+                >
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Active</th>
+                <th>Admin Status</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.profile.firstName }} {{ user.profile.lastName }}</td>
+                <td>{{ user.profile.email }}</td>
+                <td>{{ user.active ? 'Yes' : 'No' }}</td>
+                <td>{{ user.admin ? 'Yes' : 'No' }}</td>
+                <td>{{ user.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+
+<div class="team-page">
+  <h2>Teams</h2>
+
+  <!-- Modal for Adding a New Team -->
+  <div *ngIf="isModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Team</h3>
+        <button class="close-button" (click)="closeAddTeamModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <label for="teamName">Team Name</label>
+        <input id="teamName" [(ngModel)]="newTeam.name" type="text" placeholder="Enter team name" />
+
+        <label for="description">Description</label>
+        <textarea id="description" [(ngModel)]="newTeam.description" placeholder="Enter team description"></textarea>
+
+        <label for="members">Select Members</label>
+        <select id="members" [(ngModel)]="selectedMember" (change)="addMember()">
+          <option *ngFor="let user of availableUsers" [ngValue]="user">
+            {{ user.profile.firstName }} {{ user.profile.lastName }}
+          </option>
+        </select>
+        
+
+        <ul>
+          <li *ngFor="let member of newTeam.members">
+            {{ member.profile.firstName }} {{ member.profile.lastName }}
+            <button (click)="removeMember(member)">Remove</button>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="submit-button" (click)="submitNewTeam()"
+          [disabled]="!newTeam.name || !newTeam.description || newTeam.members.length === 0">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="teams.length === 0">
+    <p>No teams available for this company.</p>
+  </div>
+
+  <!-- Display Teams -->
+  <div class="team-grid">
+    <div *ngFor="let team of teams" class="team-card" (click)="onTeamClick(team.id)">
+      <div class="team-box">
+        <h3>{{ team.name }}</h3>
+        <p><strong>Members:</strong></p>
+        <div class="members">
+          <span *ngFor="let member of team.teammates || []" class="member-badge">
+            {{ member.profile.firstName[0] }}. {{ member.profile.lastName }}
+          </span>
+        </div>
+        <p><strong># of Projects:</strong> {{ team.projectsCount || 0 }}</p>
+      </div>
+    </div>
+
+    <!-- Add New Team Card -->
+    <div *ngIf="isAdmin" class="team-card add-new-team" (click)="openAddTeamModal()">
+      <div class="add-team-box">
+        <span>+</span>
+        <p>New Team</p>
+      </div>
+    </div>
+  </div>
+</div>

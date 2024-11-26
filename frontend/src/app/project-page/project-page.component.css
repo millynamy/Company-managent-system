@@ -1,0 +1,158 @@
+.project-page-container {
+    padding: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #42f5dd;
+    margin-bottom: 20px;
+  }
+  
+  
+  .projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .project-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1c1c1e;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .project-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-info h3 {
+    color: #42f5dd;
+    margin-bottom: 5px;
+  }
+  
+  .project-info p {
+    color: #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .status {
+    font-weight: bold;
+  }
+  
+  .status.active {
+    color: #42f54e;
+  }
+  
+  .status.inactive {
+    color: #f54242;
+  }
+  
+  .edit-button {
+    background-color: #f5a742;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .edit-button:hover {
+    background-color: #f57a1f;
+  }
+  
+  .create-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .create-button:hover {
+    background-color: #0056b3;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: #1c1c1e;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header h3 {
+    margin: 0;
+    color: #ffffff;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #ff5a5f;
+    cursor: pointer;
+  }
+  
+  .modal-body label {
+    display: block;
+    margin-bottom: 5px;
+    color: #42f5dd;
+  }
+  
+  .modal-body input,
+  .modal-body textarea,
+  .modal-body select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #2a2a2d;
+    color: #ffffff;
+  }
+  
+  .save-button {
+    background-color: #42f5dd;
+    color: #1c1c1e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .save-button:hover {
+    background-color: #2fc7a3;
+  }
+  
+  

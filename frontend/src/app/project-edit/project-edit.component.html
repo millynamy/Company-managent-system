@@ -1,0 +1,18 @@
+<form *ngIf="isAdmin" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Project Name</label>
+    <input id="name" formControlName="name">
+  </div>
+
+  <div>
+    <label for="description">Project Description</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <div>
+    <label for="active">Active</label>
+    <input type="checkbox" id="active" formControlName="active">
+  </div>
+
+  <button type="submit" [disabled]="projectForm.invalid">Submit</button>
+</form>

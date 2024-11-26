@@ -1,0 +1,18 @@
+<div class="company-page-container">
+  <h2>Company Page</h2>
+  <p>Welcome, Admin! Please select your company.</p>
+
+  <form>
+    <label for="company-select">Select a company:</label>
+    <select id="company-select" [(ngModel)]="selectedCompany" name="company" (change)="onCompanyChange($event)">
+      <option value="" disabled selected>Select a company</option>
+      <option *ngFor="let company of companies" [value]="company">{{ company }}</option>
+    </select>
+  </form>
+
+  <div *ngIf="selectedCompany">
+    <p>You have selected: <strong>{{ selectedCompany }}</strong></p>
+  </div>
+
+  <button type="button" (click)="onSubmit()" [disabled]="!selectedCompany">Submit</button>
+</div>

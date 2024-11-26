@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="project-page-container">
+  <h2>Projects for Team {{ teamId }}</h2>
+
+  <div class="projects-container">
+    <div *ngFor="let project of projects" class="project-card">
+      <div class="project-info">
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.description || 'Learn more about this project.' }}</p>
+        <span class="status" [ngClass]="project.active ? 'active' : 'inactive'">
+          {{ project.active ? 'Active' : 'Inactive' }}
+        </span>
+      </div>
+      <button class="edit-button" (click)="openEditModal(project)">Edit</button>
+    </div>
+  </div>
+
+  <button *ngIf="isAdmin" class="create-button" (click)="openEditModal()">Create New Project</button>
+
+  <!-- Modal for Editing Projects -->
+  <div *ngIf="isModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>{{ isEditMode ? 'Edit Project' : 'Create New Project' }}</h3>
+        <button class="close-button" (click)="closeModal()">×</button>
+      </div>
+      <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <label for="name">Project Name</label>
+          <input id="name" formControlName="name" placeholder="Enter project name" />
+
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description" placeholder="Enter project description"></textarea>
+
+          <label for="active">Active?</label>
+          <select id="active" formControlName="active">
+            <option [value]="true">Active</option>
+            <option [value]="false">Inactive</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button class="save-button" type="submit" [disabled]="projectForm.invalid">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
